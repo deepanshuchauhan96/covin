@@ -1,0 +1,19 @@
+<template>
+    <lightning-card if:false={isTable} title="Check Covid-19 Vaccine Availablity" icon-name="standard:record">
+            <div class="slds-m-around_medium">
+                <lightning-input max-length="6" label="Pincode" onchange={handlePincodeChange} required="true"></lightning-input>
+                <lightning-input  min="today" type="date" label="Date" onchange={handleDateChange}  class="slds-m-bottom_x-small" required="true"></lightning-input>
+                <lightning-button label="Submit" disabled={showButton} onclick={submitForm} variant="brand" ></lightning-button>
+            </div>
+        </lightning-card>
+        
+        <lightning-card title="Slot Availiablity Details" icon-name="standard:record" if:true={isTable}>
+        <lightning-button class="slds-m-left_x-small" label="Back"  onclick={goBack} variant="brand" ></lightning-button>
+        <lightning-datatable
+            data={data}
+            columns={columns}
+            key-field="id">
+        </lightning-datatable>
+    </lightning-card>
+
+</template>
