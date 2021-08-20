@@ -1,6 +1,5 @@
 import { LightningElement } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-const data = [];
 
 export default class Covin extends LightningElement {
     date='';
@@ -8,7 +7,6 @@ export default class Covin extends LightningElement {
     data = [];
     columns = [];
     isTable = false;
-    isToast = false;
     apiUrl = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin`
 
     get showButton() {
@@ -20,8 +18,7 @@ export default class Covin extends LightningElement {
         this.date = event.target.value;
         const newDate = new Date(this.date);
         const today = new Date();
-        console.log(newDate);
-        console.log(today);
+       
         if (
             (newDate.getDate() < today.getDate() && newDate.getMonth() === today.getMonth())
              || newDate.getMonth() < today.getMonth()) {
